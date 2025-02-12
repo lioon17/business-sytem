@@ -13,7 +13,6 @@ import {
   UserPlus,
   GraduationCap,
 } from "lucide-react";
-import { Avatar, AvatarFallback } from "@/app/components/ui/avatar";
 
 export function Sidebar({ onSelectSection }: { onSelectSection: (section: string) => void }) {
   const [activeSection, setActiveSection] = useState("dashboard"); // Default section

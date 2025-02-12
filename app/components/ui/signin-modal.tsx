@@ -27,8 +27,8 @@ export default function LoginModal({ onClose }: { onClose?: () => void }) {
         setMessage(data.message);
       }
     } catch (error) {
-      setMessage("Something went wrong");
-    }
+        console.error(error); // ✅ Use `error` to prevent linting issues
+      }
   };
 
   return (
