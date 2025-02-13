@@ -9,6 +9,8 @@ import { StatsCards } from "../components/stats-cards";
 import { InventoryTable } from "../components/inventory-table";
 import Link from "next/link";
 
+export const dynamic = "force-dynamic";
+
 export default function DashboardPage() {
   const [activeSection, setActiveSection] = useState("dashboard"); // Default section
 
