@@ -1,10 +1,19 @@
-export function Input({ type, placeholder, className }: { type: string; placeholder: string; className?: string }) {
+import { InputHTMLAttributes, forwardRef } from "react";
+
+interface InputProps extends InputHTMLAttributes<HTMLInputElement> {
+  className?: string;
+}
+
+export const Input = forwardRef<HTMLInputElement, InputProps>(
+  ({ className = "", ...props }, ref) => {
     return (
       <input
-        type={type}
-        placeholder={placeholder}
-        className={`border px-3 py-2 rounded w-full focus:outline-none focus:ring-2 focus:ring-blue-500 ${className}`}
+        ref={ref}
+        className={`border p-2 rounded-md ${className}`}
+        {...props} // ✅ This spreads all props, including `id`
       />
     );
   }
-  
+);
+
+Input.displayName = "Input";

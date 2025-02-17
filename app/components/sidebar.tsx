@@ -20,9 +20,11 @@ export function Sidebar({ onSelectSection }: { onSelectSection: (section: string
   const menuItems = [
     { title: "Dashboard", icon: BarChart3, section: "dashboard" },
     { title: "Inventory", icon: Users, section: "inventory" },
+    { title: "Sales Report", icon: TrendingUp, section: "sales" },
+    { title: "Sales management", icon: Building2, section: "salesManagement" },
     { title: "Companies", icon: Building2, section: "companies" },
     { title: "Transaction", icon: Receipt, section: "transaction" },
-    { title: "Sales Report", icon: TrendingUp, section: "sales" },
+   
     { title: "Task", icon: ClipboardList, section: "task" },
     { title: "Accounting", icon: Calculator, section: "accounting" },
     { title: "Calendar", icon: Calendar, section: "calendar" },
