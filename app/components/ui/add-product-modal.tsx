@@ -28,13 +28,14 @@ export function AddProductModal({ isOpen, onClose, onAddProduct }: AddProductMod
   const [error, setError] = useState("");
 
   // Handle text input changes
-  const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
-    const { id, value } = e.target;
+  const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+    const { id, value } = event.target;
     setNewProduct((prev) => ({
       ...prev,
       [id]: id === "price" || id === "stock" ? parseFloat(value) || "" : value,
     }));
   };
+  
 
   // Handle form submission
   const handleSubmit = async (e: React.FormEvent) => {
@@ -99,16 +100,22 @@ export function AddProductModal({ isOpen, onClose, onAddProduct }: AddProductMod
 
           <div className="space-y-2">
             <Label htmlFor="category">Category</Label>
-            <Select value={newProduct.category} onValueChange={(value) => setNewProduct({ ...newProduct, category: value })}>
-              <SelectTrigger>
-                <SelectValue placeholder="Select a category" />
-              </SelectTrigger>
-              <SelectContent>
-                <SelectItem value="Electronics">Electronics</SelectItem>
-                <SelectItem value="Furniture">Furniture</SelectItem>
-                <SelectItem value="Accessories">Accessories</SelectItem>
-              </SelectContent>
-            </Select>
+            <Select value={newProduct.status} onValueChange={(value) => setNewProduct({ ...newProduct, status: value })}>
+                <SelectTrigger>
+                    <SelectValue placeholder="Select a status" />
+                </SelectTrigger>
+                <SelectContent>
+                    <SelectItem value="In Stock" onSelect={() => setNewProduct({ ...newProduct, status: "In Stock" })}>
+                    In Stock
+                    </SelectItem>
+                    <SelectItem value="Low Stock" onSelect={() => setNewProduct({ ...newProduct, status: "Low Stock" })}>
+                    Low Stock
+                    </SelectItem>
+                    <SelectItem value="Out of Stock" onSelect={() => setNewProduct({ ...newProduct, status: "Out of Stock" })}>
+                    Out of Stock
+                    </SelectItem>
+                </SelectContent>
+                </Select>
           </div>
 
           <div className="space-y-2">
@@ -128,16 +135,22 @@ export function AddProductModal({ isOpen, onClose, onAddProduct }: AddProductMod
 
           <div className="space-y-2">
             <Label htmlFor="status">Status</Label>
-            <Select value={newProduct.status} onValueChange={(value) => setNewProduct({ ...newProduct, status: value })}>
-              <SelectTrigger>
-                <SelectValue placeholder="Select a status" />
-              </SelectTrigger>
-              <SelectContent>
-                <SelectItem value="In Stock">In Stock</SelectItem>
-                <SelectItem value="Low Stock">Low Stock</SelectItem>
-                <SelectItem value="Out of Stock">Out of Stock</SelectItem>
-              </SelectContent>
-            </Select>
+            <Select value={newProduct.category} onValueChange={(value) => setNewProduct({ ...newProduct, category: value })}>
+                <SelectTrigger>
+                    <SelectValue placeholder="Select a category" />
+                </SelectTrigger>
+                <SelectContent>
+                    <SelectItem value="Electronics" onSelect={() => setNewProduct({ ...newProduct, category: "Electronics" })}>
+                    Electronics
+                    </SelectItem>
+                    <SelectItem value="Furniture" onSelect={() => setNewProduct({ ...newProduct, category: "Furniture" })}>
+                    Furniture
+                    </SelectItem>
+                    <SelectItem value="Accessories" onSelect={() => setNewProduct({ ...newProduct, category: "Accessories" })}>
+                    Accessories
+                    </SelectItem>
+                </SelectContent>
+                </Select>
           </div>
 
           <Button type="submit" className="w-full" disabled={loading}>

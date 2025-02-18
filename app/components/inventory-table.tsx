@@ -78,11 +78,17 @@ export function InventoryTable() {
   };
 
 
-  const handleUpdateProduct = (updatedProduct: any) => {
+  const handleUpdateProduct = (updatedProduct: InventoryItem) => {
+    const productToUpdate = {
+      ...updatedProduct,
+      lastUpdated: new Date().toISOString(), // Ensure lastUpdated exists
+    };
+  
     setInventory((prev) =>
-      prev.map((product) => (product.id === updatedProduct.id ? updatedProduct : product))
+      prev.map((product) => (product.id === updatedProduct.id ? productToUpdate : product))
     );
   };
+  
 
   // 🔄 Filter Inventory by Category
   const filteredInventory = selectedCategory === "All Categories"

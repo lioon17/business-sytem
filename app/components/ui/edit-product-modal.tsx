@@ -6,6 +6,9 @@ import { Button } from "@/app/components/ui/button";
 import { Input } from "@/app/components/ui/input";
 import { Label } from "@/app/components/ui/label";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/app/components/ui/select";
+import type { InventoryItem } from "@/app/types/inventory"; // Adjust path if needed
+
+
 
 // ✅ Define a Product type
 interface Product {
@@ -19,11 +22,12 @@ interface Product {
 }
 
 interface EditProductModalProps {
-  isOpen: boolean;
-  onClose: () => void;
-  product: Product;
-  onUpdateProduct: (updatedProduct: Product) => void;
-}
+    isOpen: boolean;
+    onClose: () => void;
+    product: InventoryItem; // ✅ Change this if it was Product
+    onUpdateProduct: (updatedProduct: InventoryItem) => void;
+  }
+  
 
 export function EditProductModal({ isOpen, onClose, product, onUpdateProduct }: EditProductModalProps) {
   const [updatedProduct, setUpdatedProduct] = useState<Product>({ ...product });

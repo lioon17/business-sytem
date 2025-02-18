@@ -10,6 +10,7 @@ export async function GET() {
 
     return NextResponse.json(sales, { status: 200 });
   } catch (error) {
+    console.error("Error fetching sales:", error); // ✅ USE the error
     return NextResponse.json({ error: "Failed to fetch sales" }, { status: 500 });
   }
 }
@@ -38,7 +39,7 @@ export async function POST(req: Request) {
 
     return NextResponse.json(newSale, { status: 201 });
   } catch (error) {
-    console.error("Error adding sale:", error);
+    console.error("Error adding sale:", error); // ✅ USE the error
     return NextResponse.json({ error: "Failed to add sale" }, { status: 500 });
   }
 }
