@@ -30,7 +30,7 @@ export function Select({ value, onValueChange, children }: SelectProps) {
     </div>
   );
 }
-
+ 
 export function SelectTrigger({ children }: { children: ReactNode }) {
   return <>{children}</>;
 }
